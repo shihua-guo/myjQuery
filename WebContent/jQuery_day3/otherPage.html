@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>远程登陆？动态加载</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//在div1中加载其他页面。嵌入参数还有函数都okay
+		//相对于jsp的include，这个不好。因为需要重复导入body
+		$("#div1").load("test2.jsp",{name:"lisi",age:30},function (){
+				/* alert("你好！！！"); */
+				console.log();
+			});
+		
+		var test = "<p>我是测试</p>";
+		console.log(test);
+		var $test = $(test);
+		console.log($test);
+
+	});
+
+
+</script>
+</head>
+<body>
+	<div id="div1"></div>
+
+</body>
+</html>

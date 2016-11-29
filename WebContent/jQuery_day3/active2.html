@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn1").on("click",function(){
+		//第一个参数代表目标效果，第二个参数代表达到预期效果的时间
+		$("#div1").animate({
+			width:"90%",
+			height:"50%",
+			fontSize:"50px",
+			borderWidth:1
+		},1000);
+	});
+	/* $("#div1").animate({
+		left:100px
+	},1000); */
+	
+
+	
+
+	
+});
+
+</script>
+
+<style type="text/css">
+	
+</style>
+</head>
+<body>
+<button id="btn1">动画开始</button>
+<div id="div1" style="border: 1px solid red">我是div</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+			$("#find").on("click",function (){
+				$.ajax({
+					url:"../jsonSer",
+					type:"post",
+					dataType:"json",
+					success:function(data){
+						console.log(data);
+						$.each(data,function (i,e){//i:key e:value
+							/* console.log(i+"----"+e.name);
+							console.log(i+"----"+e.age); */
+							console.log(i+"----"+e[0].name);
+							console.log(i+"----"+e[0].age);
+							console.log(i+"----"+e[1].name);
+							console.log(i+"----"+e[1].age);
+							$.each(e,function(a,b){
+								
+							});
+						});
+					}
+				});
+			});
+			
+		});
+	
+</script>
+</head>
+<body>
+	<button id="find">查询</button>
+	<table>
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+		</tr>
+	</table>
+</body>
+</html>

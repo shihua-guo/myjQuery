@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//by getting tag's attribute
+		var att = $("#input1:text").attr("myTest");//直接获取属性的值
+		console.log(att);
+
+		var input = $("#input1");
+		console.log(input);
+		//创建节点
+		var p = $("<p>我是一个p！</p>");
+		/* append 直接当作子元素，appendTo当作子元素的最后一个 */
+		input.append(p);
+		//prepend 把p作为a的第一个子元素
+		input.prepend(p);
+		
+		//after 把x追加到后面（兄弟元素）
+		input.after(p);
+		//insertAfter 把input追加到b的后面当作兄弟元素
+		input.insertAfter(p);
+
+		//before：把p2插入到span前面。
+		var p2 = $("<p>我是第二个p2！</p>");
+		$("span:eq(2)").before(p2);
+
+		var s3 = $("span:eq(3)");
+		//remove：删除节点:选中某个元素删除
+		$("#btn1").on("click",function (){
+			//删除元素也会删除元素绑定的事件
+			s3.remove();
+		});
+		
+		$("#btn2").on("click",function (){
+			//把删除的元素添加
+			$("span:eq(1)").append(s3);
+		});
+		
+		$("#btn3").on("click",function (){
+			//删除class为span1.参数本身内容是选择器，。一般是针对删除元素本身的属性
+			//id,class
+			$("span").remove(".span1");
+		});
+		
+		$("#btn4").on("click",function (){
+			//删除含有myTest的属性的span
+			$("span").remove("[myTest]");//
+		});
+
+		//empty
+		$("#btn5").on("click",function (){
+			//清空某个元素所有的子元素
+			$("#empty").empty();//
+			
+		});
+
+
+		var detach = $("#detach");
+		$("#detach").on("click",function(){
+				alert("我是detach！！");
+			});
+		//detach删除，但是不会删除绑定的事件
+		$("#btn6").on("click",function (){
+			//清空某个元素所有的子元素
+			detach.detach();		
+		});
+		//添加div
+		$("#btn7").on("click",function (){
+			//清空某个元素所有的子元素
+			$("#empty").append(detach);	
+		});
+
+
+		//复制
+		$("#btnno").on("click",function (){
+			//克隆某个元素>.但是不绑定事件。加入true参数就是绑定事件
+			var clone=$("span").clone(true);
+			$("#clone").append(clone);
+		});
+
+		
+		//替换节点
+		$("#btn8").on("click",function (){
+			$("#tihuan").replaceWith("<span>我是替换之后的span</span>");
+		});
+
+		//替换节点
+		$("#btn9").on("click",function (){
+			//前面替换后面
+			$("h1:eq(1)").replaceAll($("#tihuan"));
+		});
+
+		
+		//wrap:包裹！！
+		$("#btn10").on("click",function (){
+			//前面的被包裹在后面的标签中。每个套一个
+			$("span").wrap("<font color='red'></font>");
+			//全部集中再一起被包裹
+			//$("span").wrapAll("<font color='red'></font>");
+			//内容被包裹在标签内，而不是标签自己被包，
+			$("span").wrapInner("<font color='red'></font>");
+			
+		});
+
+		//添加属性
+		$("#attdiv").attr("love","alan");
+
+		//删除属性
+		$("#attdiv").removeAttr("my");
+
+		//改变属性？？？
+
+		
+		
+		
+		
+		});
+</script>
+<style type="text/css">
+	#attdiv2{
+		color: red;
+	}
+	#attdiv1{
+		color: blue;
+	}
+</style>
+</head>
+<body>
+<input type="text" id="input1" myTest="test"/>我是一个input<br><br>
+<span class="span1">我是span1</span><br>
+<span myTest="test">我是span2</span><br>
+<span>我是span3</span><br>
+<span>我是span4</span><br>
+<span>我是span5</span><br>
+<span>我是span6</span><br>
+<span>我是span7</span><br>
+<span>我是span8</span><br>
+<h1>我是分割！！</h1>
+<div id="empty">我们是div的孩子<br>
+	<span>我是span6</span><br>
+	<span>我是span7</span><br>
+	<span>我是span8</span><br>
+</div>
+<div id="detach" >
+	我是detach！！
+</div><br>
+<button id="btnno" >没有事件</button>
+<div id="clone">
+	
+</div>
+<div id="tihuan">我是替换div </div><br><br>
+<h1>我是替换上面的h1！！
+</h1>
+
+<div id="attdiv" my="jade">我是带有属性的div</div>
+<div id="attdiv2" my="jade">我是带有属性的div222</div>
+<button id="btn1">我是删除</button>
+<button id="btn2">我是添加</button>
+<button id="btn3">我是删除2号</button>
+<button id="btn4">我是删除3号</button>
+<button id="btn5">我是清空按钮</button>
+<button id="btn6">我是detach按钮</button>
+<button id="btn7">我是添加detach按钮</button>
+<button id="btn8">我是替换节点内容</button>
+<button id="btn9">我是替换节点内容222</button>
+<button id="btn10">WRAP!!</button>
+<button id="btn11">我是切换！！</button>
+</body>
+</html>

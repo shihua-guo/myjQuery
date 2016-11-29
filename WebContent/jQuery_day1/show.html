@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Js，JQ消失测试</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	function js(){
+		/* js消失按钮处理 */
+		var jsB = document.getElementById("jsB");
+		console.log(jsB);
+		jsB.onclick = function (){
+			document.getElementsByTagName("div")[0].style['display']='none';
+		}
+		
+		/* jq按钮消失处理 */
+		var jqB = $("#jqB");
+		//判断jqB是不是jQuery类型的
+		console.log(jqB instanceof jQuery);
+		console.log(jqB);
+		/* jqB.mousedown(function (){
+			$("div").hide();
+		}); */
+		jqB.click(function (){
+			$("div").hide("normal");
+		});
+		
+		/* jq出现按钮处理 */
+		$("#jqB2").click(function (){
+			$("div").show("normal");
+		});
+		
+	}
+</script>
+
+</head>
+<body style="font-size: 30px;" onload="js()">
+	<input type="button" value="JS消失" id="jsB">
+	<input type="button" value="JQ消失" id="jqB">
+	<input type="button" value="JQ出现" id="jqB2">
+	<br>
+	<div>我是div</div>
+</body>
+</html>

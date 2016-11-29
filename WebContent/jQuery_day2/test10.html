@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			//请求资源路径
+			url:"../Ajax",
+			data:{name:"lisi",age:"30",body:["lisi","wwu"]},
+			traditional:true,
+			//指明提交的方式
+			type:"get",
+			//接受后台传来的数据格式
+			dataType:"text",
+			//不需要缓存
+			cache:true,
+			//contentType。get不需要请求头，post需要
+			//回调函数。
+			success:function(data){
+				console.log(data);
+			}/* ,
+			error:function(){
+				
+			} */
+		});
+		
+		
+		$.get("../Ajax",{name:'lisi',age:30},function (){
+			
+		},"text");
+	});
+</script>
+</head>
+<body>
+
+</body>
+</html>

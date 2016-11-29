@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//拿全部标签
+		console.log($('*'));
+		//组合选择器
+		var v1 = $("div,#p1,.span1");
+		console.log(v1);
+		for(var i=0;i<v1.length;i++){
+			console.log(v1.html);
+		}
+		
+		//后代选择器:子代的子代都会被选中
+		console.log($("div span"));
+		console.log($("div span")+"--------"+$("div span").html());
+		//子代选择器:只选取子类的标签
+		console.log($("div>span"));
+		//相邻兄弟选择器.选择相邻的同级的标签
+		console.log($("div+p"));
+		//直接获取下一个我
+		console.log($("div").next());
+		//一般兄弟选择器
+		console.log($("div~span"));
+		//获取前后的所有兄弟元素
+		console.log("获取前后的所有兄弟元素");
+		console.log($("div").siblings());
+		//获取第一个元素.所有span标签的第一个元素
+		console.log("获取第一个元素");
+		console.log($("span").first());
+		//最后一个元素
+		console.log($("span").last());
+		//去掉给定内容。去掉class为span0的标签
+		console.log($("span:not('.span0')"));
+		
+	});
+</script>
+</head>
+<body>
+	<div>我是一个div
+		<span id="span00">我是div里面的span
+			<span>我是div里面的span里面的span</span>
+		</span>
+			<span>我是div里面的span2</span>
+	</div>
+	<p id="p1">我是一个p</p>
+	<span class="span0">我是一个span</span>
+	<p id="p1">我是一个p</p>
+	<span class="span1">我是一个span</span>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#hide").on("click",function(){
+		console.log("----");
+		$("#div1").hide("normal");
+	});
+	$("#show").on("click",function(){
+		/* console.log("----");
+		$("#div1").show("normal");
+ */
+		//1代表速度。2代表执行完之后触发的函数
+		$("#div1").show("normal",function(){
+				console.log("我");
+			});
+		
+	});
+
+	//动态切换.hide和show切换
+	$("#change").on("click",function(){
+		$("#div1").toggle("normal",function(){
+			console.log("我");
+		});
+		
+	});
+
+
+	//渐变
+	$("#fadein").on("click",function(){
+		$("#div2").fadeIn("normal");
+
+	});
+	$("#fadeout").on("click",function(){
+		$("#div2").fadeOut("normal");
+
+	});
+	$("#fchange").on("click",function(){
+		$("#div2").fadeToggle("normal",function(){
+			console.log("我");
+		});
+	});
+
+	//slideDown
+	$("#slideDown").on("click",function(){
+		$("#div2").slideDown("normal");
+	});
+	$("#slideUp").on("click",function(){
+		$("#div2").slideUp("normal");
+	});
+	
+
+	
+
+	
+
+	
+});
+
+</script>
+
+<style type="text/css">
+	
+</style>
+</head>
+<body>
+<button id="hide">我是按钮1</button>
+<button id="show">我是按钮2</button>
+<button id="change">我是按钮3</button>
+<div id="div1" style="border: 1px solid red;width: 100px;height: 100px;"></div>
+<button id="fadein">我是按钮1</button>
+<button id="fadeout">我是按钮2</button>
+<button id="fchange">我是按钮3</button>
+<button id="slideDown">我是slideDown</button>
+<button id="slideUp">我是slideUp</button>
+<div id="div2" style="border: 1px solid red;width: 100px;height: 100px;"></div>
+</body>
+</html>

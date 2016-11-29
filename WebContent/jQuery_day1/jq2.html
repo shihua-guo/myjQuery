@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>一些关于JQ的测试</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	//先加载html文档，函数方法1:
+	jQuery(document).ready(function (){
+		//.html
+		$("div").click(function (){
+			$("div").html("div");
+		});
+		
+		//js和jq对象之间的转换: js->jq
+		var p = $("<p>我是一个p</p>");
+		console.log(p);
+		console.log(p instanceof jQuery);
+		$("span").append(p);
+		
+		//js ->jq
+		var p2 = $("<p>我是另外一个p</p>");
+		var sp = document.getElementsByTagName("span")[0]; 
+		console.log(sp);
+		$(sp).append(p2);
+	});
+	
+	//方法二
+	$(function (){
+		//$("div").html("div");	
+	});
+</script>
+</head>
+<body>
+<div>我是一个div</div>
+<span>我是一个span</span>
+</body>
+</html>

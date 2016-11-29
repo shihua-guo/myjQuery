@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件绑定</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//推荐使用on。事件处理函数：click
+		//fource in 聚焦。unload，等待页面卸载，页面关闭的是
+		//查看事件函数
+		$("#btn1").on("mouseover",function (e){
+				console.log(e);				
+			});
+
+		//bind之后可以直接传入参数，还有函数
+		//传入参数还没解决
+		$("#div1").bind("mouseover","lisi",function(e){
+			console.log(e);	
+			});
+
+		//可以绑定多个事件。
+		$("#div2").bind("mouseover click mouseout","lisi",function(e){
+			console.log(e);	
+			});
+
+
+		var tmp = "我是全局变量";//一般 传入参数没有意义，因为可以通过全局变量来获取
+		//绑定多个事件每个事件都单独处理
+		$("#div3").bind({
+			mouseover:function (){
+					console.log("我是鼠标移入"+tmp);
+				},
+			click:function(){
+				console.log("我是鼠标点击");
+
+				}
+
+			});
+
+		//动态解绑事件
+		$("#btn3").on("click",function(){
+			//给谁绑定事件就解绑谁
+			$("#div3").unbind();
+			console.log("动态解绑事件");
+			});
+	
+		
+		//on和bind用法是一样的
+		$("#btn3").on("mouseover",function(){
+			//给谁绑定事件就解绑谁
+			//直接使用off来解绑
+			$("#div3").off();
+			console.log("动态解绑事件");
+			});
+	
+	
+		//事件冒泡。span的事件冒泡到div上
+		$("#div4").on("click",function (){
+				console.log("我是点击");
+			});
+		$("#span1").on("click",function (event){
+				console.log("我是点击");
+				//阻止事件冒泡
+				//event.stopPropagation();
+				return false;
+			});
+	
+		//对象默认行为
+		$("#a1").on("click",function (event){
+			//阻止元素的默认行为。一般是先执行事件然后再执行默认行为
+			//preventDefault.默认行为
+			console.log($("#a1"));//在return之后的不执行
+			//return false;//这个也能阻止默认行为
+			event.preventDefault();//这个阻止默认行为的失效。不懂？？原来是没有传入event
+			});
+	
+		//
+		$("#div5").on("click",function (event){
+				$("#div1,#div2,#div3,#div4").off();
+				//获取事件的属性
+				/* console.log(event);
+				console.log(event.type);
+	
+				//事件源对象，就是哪一个标签触发的
+				console.log(event.target);
+
+				//获取事件的的左边。可以获取点击的坐标，
+				console.log(event.pageX+"-----"+event.pageY);
+ 				*/
+				//监测鼠标的按钮，1---左键  2---中建  3---右键
+				console.log(event.which)
+
+				//最原始的事件对象.按住shift。那么那个就是true
+				console.log(event.originalEvent);
+			});
+
+		//key down就是不松开。up是松开
+		$("#input1").on("keyup keydown",function(/* keyCode, */event){
+			$("#div1,#div2,#div3,#div4，#div5").off();
+			//keyUp和keyDown都是一样的Code
+			/* console.log(keyCode); */
+			
+			//keypress不能用keyCode操作。只能用which接受
+			//而且只能监测一部分按键.which。可以区分兼容浏览器
+			console.log(event.which);
+		});
+
+		//监测是否按下ctrl
+		$("#input2").on("keydown",function(/* keyCode, */event){
+			$("#div1,#div2,#div3,#div4，#div5").off();
+			//keyUp和keyDown都是一样的Code
+			/* console.log(keyCode); */
+			
+			//keypress不能用keyCode操作。只能用which接受
+			//而且只能监测一部分按键.which。可以区分兼容浏览器
+			console.log(event.shiftKey);
+			console.log(event.altKey);
+		});
+
+
+		
+
+	
+
+
+	
+
+	
+	});//end
+
+
+	
+	
+
+
+	//on
+
+</script>
+</head>
+<body >
+	<input type="text" id="input2"/>
+	<input type="text" id="input1" disabled="disabled"/>
+	<div id="div5"  style="border: 2px solid red; width: 100px;">我是div5</div>
+	<a id="a1" href="test2.jsp">百度</a>
+	<div id="div1">我是div1！！！</div>
+	<div id="div2" style="border: 2px solid red; width: 100px;height: 100px;">
+	我是div2！可以添加多个事件</div><br><br>
+	<div id="div3" style="border: 2px solid red; width: 100px;height: 100px;">
+	我是div3！添加多个事件，并且每个事件单独处理</div>
+	<button id="btn3">动态解绑事件</button>
+	<div id="div4" style="border: 2px solid red; width: 100px;height: 100px;">
+	
+	<span id="span1">我是div里面的span</span>
+	我是div3！添加多个事件，并且每个事件单独处理</div>
+</body>
+</html>

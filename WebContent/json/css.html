@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	console.log($("div:eq(0)"));
+	$("div:eq(0)").addClass("div2");
+	$(".div1").attr("class");
+
+	$("#btn").on("click",function (){
+			$(".div1").removeClass("div1");
+		});
+
+	//toggleClass样式切换。
+	
+	//hasClass判断某个元素是否含有某个样式？
+	console.log();
+</script>
+
+<style type="text/css">
+	.c1{
+	}
+	.div1{
+		margin: 10%;
+		width: 200px;
+		height: 400px;
+		border: 2px solid;
+		border-color: red;
+		position: relative;
+		top: 10px;
+		left: 10px;
+	}
+</style>
+</head>
+<body>
+	<div class="div1">我是div</div>
+	<div >我是div</div>
+	<div >我是div</div>
+	<button id="btn1" >我是删除</button>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自定义事件</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+
+		//自定义事件
+		$("#btn1").on("myClick",function(){
+			alert("我是按钮1");	
+
+		});
+		//自定事件。模拟触发事件
+		$("#btn1").on("click",function(){
+			$("#btn1").trigger("myClick");
+		});
+
+		//模拟调用自定义事件.间接调用其他按钮的事件
+		$("#btn2").on("click",function(){
+			$("#btn1").trigger("click");
+		});
+
+		//判断是否按下enter
+		$("#input1").on("keyup",function(e){
+			if(e.keyCode==13){
+				$("#btn1").trigger("click");
+			}
+	
+		});
+
+		//a
+		$("#a1").mouseover(function(){
+				console.log("我是a1");
+				//alert("我是");
+			});
+		$("#a1").click(function(){
+				console.log("我是a1");
+				alert("我是");
+			});
+
+
+		//form表单事件
+		$("input:text").focus(function (){
+			/* console.log("聚焦");
+			console.log(this.value);
+			//转化为jQuery对象
+			console.log($(this).val()); */
+		});
+		
+		$("#input1").on("blur",function (){
+			console.log("失去焦点");
+			console.log(this.value);
+			//转化为jQuery对象
+			console.log($(this));
+		});
+
+		//内容发生改变的时候都可以使用change
+		$("#sel1").change(function (){
+			console.log(this);
+			console.log(this.value);
+			console.log($(this).val());
+		});
+		$("#input1").change(function (){
+			//console.log(this.value);
+			//转化为jQuery对象
+			//console.log($(this));
+		});
+
+
+		//input一部分内容选中的时候触发事件
+		//光标选中一部分内容，选中input的内容的时候触发
+		$("#input1").select(function (e){
+			console.log(this.value);
+			//得到选中的值.获取选中的位置（start，end）。获取子字符串
+			console.log(
+					this.value.substring(e.target.selectionStart,e.target.selectionEnd));
+			
+		});
+
+
+		//submit：只能使用在form表单，给form绑定事件
+		$("#form1").submit(function(){
+			console.log("---");
+			return false;
+		});
+
+		$("input:submit").on("click",function(){
+			console.log("----w 是");	
+
+		});
+		/* $("input:submit").(function(){
+			console.log("----w 是");	
+
+		});
+		 */
+
+		 //给div添加聚焦失去焦点事件
+		 //focusin。代表光标停留在div里面的任意元素，都代表聚焦
+		 $("#div1").focusin(function(){
+			 console.log("我是div的聚焦");
+
+			 });
+
+		 //鼠标移入。
+		/*  $("#div1").hover(
+				 function(){
+			 console.log("我是div的hover移入");
+
+			 },function(){
+			 console.log("我是div的hover移出");
+
+		 }); */
+
+		 //鼠标移动的事件触发
+		$("#div1").mousemove(function(e){
+			//console.log(e.pageX+"----"+e.pageY);
+		 });
+
+		 //mouseleave和enter。不关注子元素。
+		 //
+	/* 	$("#div2").mouseenter(function(){
+			console.log("我是div2的mouseenter");
+		});
+		$("#div2").mouseleave(function(){
+			console.log("我是div2的mouseleave");
+		});
+		$("#div3").mouseenter(function(){
+			console.log("我是div3的mouseenter");
+		});
+		$("#div3").mouseleave(function(){
+			console.log("我是div3的mouseleave");
+		});
+ */
+		//mouseon  mouseout。关注目标的子区域
+		$("#div4").mouseover(function(){
+			console.log("我是div4的mouseover");
+		});
+		$("#div4").mouseout(function(){
+			console.log("我是div4的mouseout");
+		});
+		$("#div5").mouseover(function(){
+			console.log("我是div5的mouseover");
+		});
+		$("#div5").mouseout(function(){
+			console.log("我是div5的mouseout");
+		});
+		
+		 
+
+		
+		
+
+
+
+
+
+		
+	});
+	
+</script>
+<style type="text/css">
+	div{
+		border: 2px solid red;
+	}
+</style>
+</head>
+<body >
+<div id="div4">我是div4
+<div id="div5">我是div5</div>
+</div>
+<br>
+<br>
+<div id="div2">我是div2
+<div id="div3">我是div3</div>
+
+</div>
+<div id="div1">我是div1
+	<input type="text">
+</div>
+<form action="" id="form1">
+	<input type="text" name="name">
+	<input type="submit" value="submit">
+</form>
+<select id="sel1">
+	<option >广东</option>
+	<option >江苏</option>
+	<option >湖南</option>
+</select>
+<a href="test2.jsp" id="a1">我是a1</a>
+<input type="text" id="input1" value="提交数据"/>
+<button id="btn1">提交</button>
+<br>
+<button id="btn1">我是按钮</button>
+<button id="btn2">我是按钮</button>
+</body>
+</html>

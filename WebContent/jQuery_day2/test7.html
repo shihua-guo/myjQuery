@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//除去表单中设置了disable的标签都被选中
+		console.log($("*:enabled"));		
+		console.log($("*:disabled"));		
+		//动态绑定事件
+		$(".button").on("click",function (){
+			console.log("onclick");
+			//选择被选中的
+			var che=$("input[type='radio']:checked")
+			var box=$("input[type='checkbox']:checked")
+			for(var i=0;i<box.length;i++){
+				console.log(box[i]);
+				
+			}
+			
+			//select标签
+			var sel = $("select option:selected");
+			console.log(sel);
+			//input 用户输入的所有标签
+			var sel = $("select option:selected");
+			console.log(sel);
+			
+			
+		});
+	});
+	//有id，class属性的
+</script>
+</head>
+<body>
+	<form action="login">
+		<input type="hidden" name="msg"/>
+		userName:<input type="text" name="username"/><br>
+		passwd:<input type="text" name="passwd"/><br>
+		sex:
+		<input type="radio" name="sex"/>男
+		<input type="radio" name="sex"/>女<br>
+		hobbit:
+		<input type="checkbox" name="hobby" value="0"/>篮球
+		<input type="checkbox" name="hobby" value="1"/>足球
+		<input type="checkbox" name="hobby" value="2"/>排球
+		<input type="checkbox" name="hobby" value="3"/>羽毛球
+		<br>
+		area:
+		<select name="city" >
+			<option>苏州</option>
+			<option>南京</option>
+			<option>昆山</option>
+		</select>
+		<br>
+		<input type="submit" value="submit"/>
+		<input type="button" value="reset" class="button"/>
+	</form>
+
+</body>
+</html>

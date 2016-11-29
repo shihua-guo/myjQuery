@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jq选择器测试</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	/* 选择器测试 */
+	$(function (){
+		//标签名选择器
+		console.log($("div"));
+		//id选择器
+		console.log($("#p1"));
+		console.log($("#p1").text());
+		//class选择器
+		console.log($(".p3"));
+		console.log($(".p3").text("我是text"));
+		console.log($(".p3").text());
+		
+		console.log($(".p3").html("我是html"));
+		console.log($(".p3").text());
+	});
+</script>
+</head>
+<body>
+	<div>
+		<p id="p1">我是P1，我id是p1</p>
+		<p id="p1">我是P2，我id是p1</p>
+		
+		<p class="p3">我是P3，我id是p3</p>
+		<p class="p3">我是P4，我id是p3</p>
+	</div>
+	<div>我是一个div</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		console.log($("#div1").height());
+		//inner会加上padding。所以是padding的2倍加上height，不计算border的高和宽
+		console.log($("#div1").innerHeight());
+		//获取宽高，直接赋值。整数
+		console.log($("#div1").width(800));
+
+		//获取偏移量:边框距离浏览器的距离
+		var offset = $("#div1").offset();
+		console.log(offset);
+		console.log(offset.top+"-----"+offset.left);
+		//设置offset
+		$("#div1").offset({top:100,left:100});
+
+
+		//位置。就是坐标。
+		var po= $("#div1").position();
+		console.log(po);
+		//设置position:无法设置
+		//$("#div1").position({top:30,left:10});
+
+		//offset parent，获取有定位信息的最近的一个祖先
+		$("#div1").offsetParent().css("backgroud-color","red");
+	});
+</script>
+
+<style type="text/css">
+	#div0{
+		margin: auto;
+		top: 40px;
+		left: 30px;		
+	}
+	#div1{
+		height: 500px;
+		width: 400px;
+		border: 2px solid;
+		border-color: red;
+		padding: 50px;
+	}
+</style>
+</head>
+
+<body>
+<div id="div0">
+
+<div id="div1">
+</div>
+<div >W </div>
+</div>
+</body>
+</html>

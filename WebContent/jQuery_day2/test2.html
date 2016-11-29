@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//与索引相关
+		//even:选择偶数的标签
+	//	$("tr:even").css("background-color","black");
+		//采用过滤器函数,推荐使用过滤器
+		//$("tr").filter(":even").css("background-color","black");
+		//odd：选择奇数的标签
+		//$("tr").filter(":odd").css("font-size","20px");
+		//eq选择特定的标签
+		$("tr").filter("eq");
+		//console.log($("tr").filter(":eq(5)").css("background-color","red"));
+		//gt：grand then大于
+		//$("tr").filter(":gt(3)").css("background-color","green");//大于不等于
+		//$("tr").slice(3).css("background-color","green");//大于等于
+		//lt：小于
+		$("tr").filter(":lt(3)").css("background-color","red");//小于
+		//选择所有含有标题的标签
+		$("*").filter(":header").css("background-color","yellow");
+		//内容选择器.内容包含td1的标签
+		$("td").filter(":contains('td1')").css("background-color","red");
+		//empty：选择所有的空元素
+		$("td").filter(":empty").css("background-color","blue");
+		//has是否存在
+		console.log($("table").filter(":has(span)"));
+		console.log($("table:has(span)"));
+		//parent只要含有子元素的都显示出来
+		console.log($("div:parent()"));
+		//fadeTo：变色，渐变.第一个参数是时间ms，第二个是透明度
+		$("div:parent()").fadeTo(3000,0.3);
+		
+		
+	});
+</script>
+</head>
+<body>
+<h1>我是h1</h1>
+<h2>我是h2</h2>
+<h3>我是h3</h3>
+<h4>我是h4</h4>
+<h5>我是h5</h5>
+<h6>我是h6</h6>
+<table style="border: 2px solid;">
+	<tr>
+		<td>我是td1
+		<span>我是span</span>
+		<div>我是div</div>
+		<div>我是div</div>
+		</td>
+		<td>我是td1</td>
+		<td>我是td1</td>
+	</tr>
+	<tr>
+		<td>我是td2
+		
+		<div>我是div</div>
+		</td>
+		<td>我是td2</td>
+		<td>我是td2</td>
+	</tr>
+	<tr>
+		<td>我是td3</td>
+		<td>我是td3</td>
+		<td>我是td3</td>
+	</tr>
+	<tr>
+		<td>我是td4</td>
+		<td>我是td4</td>
+		<td>我是td4</td>
+	</tr>
+	<tr>
+		<td>我是td5</td>
+		<td>我是td5</td>
+		<td>我是td5</td>
+	</tr>
+	<tr>
+		<td>我是td6</td>
+		<td>我是td6</td>
+		<td>我是td6</td>
+	</tr>
+	<tr>
+		<td>我是td7</td>
+		<td>我是td7</td>
+		<td>我是td7</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>我是td1</td>
+		<td>我是td1</td>
+	</tr>
+	</table>
+</body>
+</html>

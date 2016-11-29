@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//获取隐藏的元素,不再页面显示的。hidden和display为none的标签
+		$("*:hidden");
+		console.log($("*:hidden"));
+		//把标签的边框设置为0，宽高设为0，同样为hidden，有内容也没关系
+		
+		//只要再页面的文档中能够显示
+		console.log($("*:visible"));
+		
+		//属性过滤器
+		console.log($());
+		
+	});
+</script>
+</head>
+<body>
+	<input type="hidden"/>
+	<div class="div1" style="display: none"></div>
+	<div class="div2" style="border: 0px solid red;height: 0px;width: 0px;">nkn</div>
+	
+	
+</body>
+</html>

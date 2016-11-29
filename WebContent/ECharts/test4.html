@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试dataZoom</title>
+<!-- 引入 ECharts 文件 -->
+<script src="../js/echarts.common.min.js"></script>
+<script src="../js/jquery-1.8.3.min.js"></script>
+
+</head>
+<body>
+	<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+	<div id="main" style="width: 600px; height: 400px;"></div>
+	<script type="text/javascript">
+		/* 获取dom对象 */
+		var dom = document.getElementById("main");
+		/* 新建chart对象 */
+		var myChart = echarts.init(dom);
+		/* 新建app对象 */
+		var app = {};
+		/* 定义option */
+		var option = null;
+		/* 设置option */
+		option = {
+				xAxis: {
+					//type是什么意思？
+					type: 'value',
+					},
+				yAxis: {
+					type: 'value'
+					},
+				dataZoom: [
+					{
+					//type：slider和inside
+					//都是默认控制x轴，控制y轴需要添加属性
+					//鼠标控制.
+					type: 'slider',
+					xAxisIndex: 0,
+					start: 1,
+					end: 35
+					},
+					//滚轮控制
+					 {   // 这个dataZoom组件，也控制x轴。
+			            type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
+			            xAxisIndex: 0,
+			            start: 10,      // 左边在 10% 的位置。
+			            end: 60         // 右边在 60% 的位置。
+			        },
+
+			        /* 添加y轴控制 */
+					{
+					type: 'slider',
+					yAxisIndex: 0,
+					start: 1,
+					end: 35
+					},
+					//滚轮控制
+					 {   // 这个dataZoom组件，也控制x轴。
+			            type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
+			            yAxisIndex: 0,
+			            start: 10,      // 左边在 10% 的位置。
+			            end: 60         // 右边在 60% 的位置。
+			        }
+				],
+				series: [{
+					name: 'scatter',
+					type: "scatter",
+					itemStyle: {
+						normal: {
+							opacity: 0.8
+
+							}
+						},
+					symbolSize: function (val){
+						return val[2] *40;
+						},
+					data :[["14.616","7.241","0.896"],["3.958","5.701","0.955"],["2.768","8.971","0.669"],["9.051","9.710","0.171"],["14.046","4.182","0.536"],["12.295","1.429","0.962"],["4.417","8.167","0.113"],["0.492","4.771","0.785"],["7.632","2.605","0.645"],["14.242","5.042","0.368"]]
+
+					}		
+				]
+				};
+		if(option && typeof option == "object"){
+			myChart.setOption(option,true);
+			}
+	</script>
+</body>
+</html>

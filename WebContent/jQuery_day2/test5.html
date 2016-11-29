@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+	$(function (){
+		//多个属性选择起一期使用
+		console.log($("#div1"));
+		//子元素过滤选择器 :nth-child(1),选择对应的子标签，注意有空格
+		console.log($("#div1:first :nth-child(4)"));
+		//获取子元素的index为偶数的标签
+		console.log($("#div1:first :nth-child(even)"));
+		//获取子元素的index为奇数的的标签
+		console.log($("#div1:first :nth-child(odd)"));
+		//通过
+		console.log($("span:odd"));
+	});
+	//有id，class属性的
+</script>
+</head>
+<body>
+	<div id="div1" class="div">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+	</div>
+	<div id="div2" class="div" my="briup"></div>
+	<div id="div3" class="div" my="alan">Alan</div>
+	<div id="div4" class="div" my="alanjade">Alan love jade</div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+</html>
